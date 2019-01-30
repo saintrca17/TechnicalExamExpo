@@ -75,6 +75,7 @@ class LoginContainer extends Component {
       isEmailValid: null,
       isPasswordValid: null,
       isFormValid: false,
+      checked: false
     }
   }
 
@@ -92,14 +93,18 @@ class LoginContainer extends Component {
           <Text style={styles.errorlbl}>please use at least 6-12 characters</Text>
         </View2>
         <View style={[styles.rememberMe, styles.mdmpaddingtop]}>
-          <CheckBox style={styles.chckbox} />
+          <CheckBox
+            title="Remember me" style={styles.chckbox}
+            checked={this.state.checked}
+            onPress={() => this.setState({ checked: !this.state.checked })}
+          />
           <Text style={styles.checkboxLbl}> Remember me</Text>
         </View>
         <View style={styles.lrgpaddingtop}>
           {this.state.isFormValid == true ?
             (
               <Button text="Sign In"
-                onPress={() => console.warn('Valid Form!')} disabled={false} />
+                onPress={() => console.warn('Valid Form! Successfully logged in.')} disabled={false} />
             ) : (
               <Button text="Sign In" disabled={true} />
             )
@@ -114,11 +119,9 @@ class LoginContainer extends Component {
 
     if (type == 'email') {
       if (validator.isEmail(data) == true) {
-        console.warn("Valid email.");
         this.setState({ isEmailValid: true })
 
       } else {
-        console.warn("Invalid email.");
         this.setState({ isEmailValid: false })
 
       }
@@ -126,11 +129,9 @@ class LoginContainer extends Component {
 
     if (type == 'password') {
       if (data.length >= 6 && data.length <= 12) {
-        console.warn("Valid password.");
         this.setState({ isPasswordValid: true })
       }
       else {
-        console.warn("Invalid password.");
         this.setState({ isPasswordValid: false })
       }
     }
