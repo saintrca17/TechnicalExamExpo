@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fbf8ff'
   },
   loading: {
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center'
   },
