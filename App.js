@@ -94,9 +94,9 @@ class LoginContainer extends Component {
         </View2>
         <View style={[styles.rememberMe, styles.mdmpaddingtop]}>
           <CheckBox
-            title="Remember me" style={styles.chckbox}
-            checked={this.state.checked}
-            onPress={() => this.setState({ checked: !this.state.checked })}
+            style={styles.chckbox}
+            value={this.state.checked}
+            onValueChange={() => this.setState({ checked: !this.state.checked })}
           />
           <Text style={styles.checkboxLbl}> Remember me</Text>
         </View>
